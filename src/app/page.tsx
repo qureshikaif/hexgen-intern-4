@@ -157,7 +157,6 @@ export default function Home() {
                 {[
                   "Social Media",
                   "Mindfulness",
-                  "Women",
                   "AWS",
                   "Fitness",
                   "UX Design",
