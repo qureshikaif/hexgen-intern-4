@@ -1,3 +1,4 @@
+"use client";
 import Header from "@/components/Header";
 import {
   Star,
@@ -76,9 +77,9 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between">
       <Header />
-      <section className="h-screen bg-white w-full">
-        <div className="container mx-auto flex flex-col md:flex-row">
-          <div className="w-full md:w-2/3 px-16 py-20">
+      <section className="h-screen bg-white w-full flex">
+        <div className="container mx-auto flex flex-col md:flex-row h-full">
+          <div className="w-full md:w-2/3 px-16 py-20 overflow-y-auto custom-scrollbar">
             {articles.map((article, index) => (
               <div key={index}>
                 <div className="flex mb-8">
@@ -127,7 +128,7 @@ export default function Home() {
               </div>
             ))}
           </div>
-          <div className="w-full md:w-1/3 border-l-[0.5px] border-gray-100 py-20 px-10">
+          <div className="w-full md:w-1/3 border-l-[0.5px] border-gray-100 py-20 px-10 sticky top-0 h-screen">
             <div className="mb-8">
               <h3 className="font-semibold mb-4">Staff Picks</h3>
               <ul>
@@ -146,7 +147,7 @@ export default function Home() {
                   <span className="font-bold">Becoming a Poet</span>
                 </li>
               </ul>
-              <a href="#" className="text-green-600 text-sm font-semibold">
+              <a href="#" className="text-green-600 text-sm">
                 See the full list
               </a>
             </div>
@@ -163,13 +164,14 @@ export default function Home() {
                 ].map((topic) => (
                   <span
                     key={topic}
-                    className="px-3 py-1 bg-gray-100 rounded-full text-gray-700 text-sm"
+                    className="px-4 py-2 bg-gray-100 rounded-full text-gray-700 text-sm"
                   >
                     {topic}
                   </span>
                 ))}
               </div>
-              <a href="#" className="text-green-600 text-sm font-semibold">
+              <div className="h-3"></div>
+              <a href="#" className="text-green-600 text-sm">
                 See more topics
               </a>
             </div>
@@ -221,6 +223,15 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <style jsx>{`
+        .custom-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        .custom-scrollbar {
+          -ms-overflow-style: none; /* IE and Edge */
+          scrollbar-width: none; /* Firefox */
+        }
+      `}</style>
     </main>
   );
 }
